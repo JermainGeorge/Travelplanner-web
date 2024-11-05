@@ -1,0 +1,80 @@
+*{  
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.main-header{
+    background-color:#35393b ;
+    width: 100%;
+    height: 70px;
+}
+h4{
+    color: White ;
+    font-style: italic;
+    font-family:serif;
+    font-weight: lighter;
+}
+.navbar{
+
+    padding-left: 15px;
+    padding-right: 15px;
+    
+   
+   }
+.logo a{
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+}
+
+.navdiv{
+    display: flex;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.list1{
+    text-decoration: none;
+    list-style: none;
+    display: inline-block;
+    margin-right: 25px;
+}
+li a{
+    text-decoration: none;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+   
+}
+
+li a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background-color: #f3eaea; /* Color of the underline */
+    transition: width 0.3s ease;
+}
+
+li a:hover::after {
+    width: 100%; /* Expands the line to full width on hover */
+}
+
+/*this is styling for the footer */
+.footer1{
+    display: flex;
+    background-color: #35393b;
+
+}
+.listInfooter{
+    margin-left: 25px;
+    color: white;
+}

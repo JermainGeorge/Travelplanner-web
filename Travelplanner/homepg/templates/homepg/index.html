@@ -1,11 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home page !</h1>
-</body>
-</html>
+{% extends "homepg/base.html" %}
+{%block content %}
+    <section>
+<!--this is a section that will contain the content for the home page -->
+        <div class="container">
+            <h1>This is a container </h1>
+            <p>This container will hold an image</p>
+        </div>
+        
+        <div class="container">
+            <h1>This is a container</h1>
+            <p>This container will hold an image </p>
+        </div>
+
+        <div class="container">
+            <h1>This is a container</h1>
+            <p>This container will hold an image </p>
+        </div>
+       
+    </section>
+{% endblock content %}

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" text=" text/css " href="{% static 'homepg/container.css'%}">
+    <link rel="stylesheet" text=" text/css " href="{% static 'homepg/homepg.css'%}">
+
+
+    {% if title %}
+    <title>Wonder Waves - {{title}}</title>
+    {% else %}
+    <title>Wonder waves</title>
+    {% endif %}
+    
+</head>
+<body>
+    <header class="main-header">
+    <nav class=" navbar">
+        <div class=" navdiv">
+        <div class="logo"><a href="#">Wonder Wavs </a>
+            <h4>Ride the waves of adventure</h4>
+        </div>
+        
+                <ul>
+                    <li class="list1"> <a href="#">Home</a></li>
+                    <li class="list1"> <a href="#">Bookings</a></li>
+                    <li class="list1"> <a href="#">My account</a></li>
+                    <li class="list1"> <a href="#">Blog</a></li>
+                    <li class="list1"> <a href="#">Contacts</a></li>
+                    <li class="list1"> <a href="#">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>
+        <div class="footer1">
+            <ul>
+                <li class="listInfooter">Experiential:</li>
+                <li class="listInfooter">Ultimate Beach Vacation: Sun, Sea, and Serenity</li>
+                <li class="listInfooter">City Escapes: Exploring Urban Jungles</li>
+                <li class="listInfooter">Adventure Travel: Pushing Your Limits</li>
+            </ul>
+            <ul>
+                    <li class="listInfooter">Destination-Based:</li>
+                    <li class="listInfooter"> Lost in the Paradise of Maldives</li>
+                    <li class="listInfooter">Surfing the Perfect Wave in Bali</li>
+                    <li class="listInfooter">A Cultural Odyssey: Exploring Marrakech</li>
+            </ul>
+            <ul>
+                <li class="listInfooter">estination-Based:</li>
+                <li class="listInfooter"> Lost in the Paradise of Maldives</li>
+                <li class="listInfooter">Surfing the Perfect Wave in Bali</li>
+                <li class="listInfooter">A Cultural Odyssey: Exploring Marrakech</li>
+            </ul>
+            <ul>
+                <li class="listInfooter">Destination-Based:</li>
+                <li class="listInfooter"> Lost in the Paradise of Maldives</li>
+                <li class="listInfooter">Surfing the Perfect Wave in Bali</li>
+                <li class="listInfooter">A Cultural Odyssey: Exploring Marrakech</li>
+            </ul>
+            <ul>
+                <li class="listInfooter">Destination-Based:</li>
+                <li class="listInfooter"> Lost in the Paradise of Maldives</li>
+                <li class="listInfooter">Surfing the Perfect Wave in Bali</li>
+                <li class="listInfooter">A Cultural Odyssey: Exploring Marrakech</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
