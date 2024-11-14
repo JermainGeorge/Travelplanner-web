@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Bookings.apps.BookingsConfig',
     'homepg.apps.HomepgConfig',
     'django.contrib.admin',
     'django.contrib.auth',
