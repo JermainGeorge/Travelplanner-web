@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <li>
+                <a href="{% url 'planner-home'%}">Wonderwaves</a>
+                <a href="{% url 'planner-home' %}">Home</a>
+                <a href="{% url 'planner-about' %}">About</a>
+                <a href="{% url 'planner-bookings' %}">Bookings</a>
+                <a href="{% url 'planner-profile' %}">Profile</a>
+            </li>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
