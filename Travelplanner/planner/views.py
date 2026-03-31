@@ -6,7 +6,6 @@ def about(request):
     return render(request, 'planner/about.html')
 def bookings(request):
     return render(request, 'planner/bookings.html')
-def profile(request):
-    return render(request, 'planner/profile.html')
+
 
 

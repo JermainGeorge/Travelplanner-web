@@ -14,7 +14,20 @@
                 <a href="{% url 'planner-home' %}">Home</a>
                 <a href="{% url 'planner-about' %}">About</a>
                 <a href="{% url 'planner-bookings' %}">Bookings</a>
-                <a href="{% url 'planner-profile' %}">Profile</a>
+                
+                 <div class="navbar-nav">
+            {% if user.is_authenticated %}
+                <form action="{% url 'users-logout' %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-item nav-link btn btn-link">
+                              Logout
+                            </button>
+                          </form>
+              <a class="nav-item nav-link" href="{% url 'users-profile' %}">Profile</a>
+            {% else %}
+              <a class="nav-item nav-link" href="{% url 'users-login' %}">Login</a>
+              <a class="nav-item nav-link" href="{% url 'users-register' %}">Sign up</a>
+            {% endif %}
             </li>
         </nav>
     </header>
