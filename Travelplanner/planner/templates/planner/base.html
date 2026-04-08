@@ -4,36 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wonderwaves</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Active link styling */
+        .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid #0d6efd;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <li>
-                <a href="{% url 'planner-home'%}">Wonderwaves</a>
-                <a href="{% url 'planner-home' %}">Home</a>
-                <a href="{% url 'planner-about' %}">About</a>
-                <a href="{% url 'planner-bookings' %}">Bookings</a>
-                
-                 <div class="navbar-nav">
-            {% if user.is_authenticated %}
-                <form action="{% url 'users-logout' %}" method="post" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-item nav-link btn btn-link">
-                              Logout
-                            </button>
-                          </form>
-              <a class="nav-item nav-link" href="{% url 'users-profile' %}">Profile</a>
-            {% else %}
-              <a class="nav-item nav-link" href="{% url 'users-login' %}">Login</a>
-              <a class="nav-item nav-link" href="{% url 'users-register' %}">Sign up</a>
-            {% endif %}
-            </li>
-        </nav>
-    </header>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'planner-home' %}">Wonderwaves</a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Left side -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'planner-home' %}active{% endif %}" 
+             href="{% url 'planner-home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'planner-about' %}active{% endif %}" 
+             href="{% url 'planner-about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'planner-bookings' %}active{% endif %}" 
+             href="{% url 'planner-bookings' %}">Bookings</a>
+        </li>
+      </ul>
+
+      <!-- Right side -->
+      <ul class="navbar-nav ms-auto">
+
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <form action="{% url 'users-logout' %}" method="post" class="d-flex">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link nav-link p-0">
+                Logout
+              </button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users-profile' %}">Profile</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users-login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users-register' %}">Sign up</a>
+          </li>
+        {% endif %}
+
+        <!-- 🌙 Dark mode toggle -->
+        <li class="nav-item">
+          <button id="darkModeToggle" class="btn btn-outline-secondary ms-2">
+            🌙
+          </button>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Dark mode script -->
+<script>
+  const toggleBtn = document.getElementById("darkModeToggle");
+
+  // Load saved mode
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("bg-dark", "text-light");
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("bg-dark");
+    document.body.classList.toggle("text-light");
+
+    if (document.body.classList.contains("bg-dark")) {
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      localStorage.setItem("darkMode", "disabled");
+    }
+  });
+</script>
+
 </body>
 </html>
