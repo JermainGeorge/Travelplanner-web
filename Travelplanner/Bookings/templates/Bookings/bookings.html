@@ -1,6 +1,64 @@
 {% extends 'planner/base.html' %}
 {% block content %}
-    <div>
-        <p>This is the booking page</p>
-    </div>
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Sidebar -->
+  <nav class="col-md-3 col-lg-2 d-md-block sidebar position-sticky top-0">
+  <ul class="nav flex-column nav-pills text-center" id="sidebar" role="tablist">
+
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#trip" type="button">
+        Trip Planner
+      </button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#accommodation" type="button">
+        Accommodation
+      </button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#vehicles" type="button">
+        Vehicles
+      </button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#receipts" type="button">
+        Receipts
+      </button>
+    </li>
+
+  </ul>
+</nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="trip">
+            <h2>Trip Planner</h2>
+            </div>
+
+            <div class="tab-pane fade" id="accommodation">
+            <h2>Accommodation</h2>
+            </div>
+
+            <div class="tab-pane fade" id="vehicles">
+            <h2>Vehicles</h2>
+            </div>
+
+            <div class="tab-pane fade" id="receipts">
+            <h2>Receipts</h2>
+            </div>
+
+        </div>
+        </div>
+    </main>
+
+  </div>
+</div>
 {% endblock %}
