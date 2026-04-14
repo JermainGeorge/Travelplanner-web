@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'planner.apps.PlannerConfig',
     'Users.apps.UsersConfig',
+    'Bookings.apps.BookingsConfig',
     'crispy_forms',
     'crispy_bootstrap4',
     'django.contrib.admin',
