@@ -1,55 +1,95 @@
 {% extends 'planner/base.html' %}
+{% load static %}
 {% block content %}
-    <div class="container text-center">
+
+<!-- Home page content -->
+<div class="container text-center">
   <div class="row">
-    <div class="col-md-4"><h2 class=" fw-bold text-start">Discover your next adventure with wonderwaves</h2>
-    </div>
-    <div class="col-md-4 offset-md-4">.
-        
+
+
+    <!--container 1/6-->
+    <div class="row bg-blue-900 text-light p-5 container-fluid">
+      <div class="col-md-4">
+        <h2 class=" fw-bold text-start">Discover your next adventure with wonderwaves</h2>
+      </div>
+      <div class="col-md-8">
         <p class="text-end">
-            Wonderwaves is your ultimate travel companion, 
-            designed to make your journey unforgettable.
-            Whether you're a seasoned traveler or planning your first trip,
-            our platform offers a seamless experience to explore,plan, and book your next adventure.
-            With a wide range of destinations, personalized recommendations, and user-friendly features,
-            Wonderwaves is here to help you create memories that will last a lifetime.
-            Start your journey with us today and let the waves of wonder take you to new horizons!     
+          At Wonderwaves, we believe that travel is not just about the destination, but the entire experience. 
+          Our platform is designed to provide you with all the tools and resources you need to make your travel planning effortless and enjoyable. 
+          From discovering hidden gems to booking flights and accommodations, we've got you covered. 
+          Join our community of travelers and start exploring the world with Wonderwaves today!    
         </p>
-         <div>
-        <button class="btn btn-primary">Learn more</button>
-        <button class="btn btn-outline-primary">Contact us</button>
-        
-        <img src="#" alt="Flowers in Nethalands">
+        <div>
+          <button class="btn btn-primary">Learn more</button>
+          <button class="btn btn-outline-primary">Contact us</button>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <img src ="{% static 'planner/media/destination.jpg'%}" alt ="Boats in the ocean" class="img-fluid">
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"><h2 class=" fw-bold text-start">Discover your next adventure with wonderwaves</h2>
-    </div>
-    <div class="col-md-4 offset-md-4">.
+
+
+     <!--container 2/6--> 
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <h2 class=" fw-bold text-start">Discover your next adventure with wonderwaves</h2>
         <p class="text-end">
-            At Wonderwaves, we believe that travel is not just about the destination, but the entire experience. 
-            Our platform is designed to provide you with all the tools and resources you need to make your travel planning effortless and enjoyable. 
-            From discovering hidden gems to booking flights and accommodations, we've got you covered. 
-            Join our community of travelers and start exploring the world with Wonderwaves today!
+              At Wonderwaves, we believe that travel is not just about the destination, but the entire experience. 
+              Our platform is designed to provide you with all the tools and resources you need to make your travel planning effortless and enjoyable. 
+              From discovering hidden gems to booking flights and accommodations, we've got you covered. 
+              Join our community of travelers and start exploring the world with Wonderwaves today!
         </p>
         <div>
         <button class="btn btn-primary"><a class="text-decoration-none text-light" href="#">Join our community</a></button>
         <button class="btn btn-outline-primary">Subscribe</button>
+        </div>
+      </div>
+      <div class="col-md-8">.
+        <img src="{% static 'planner/media/boat.jpg' %}" alt="Travel destination">
+      </div>
+    </div>
+    
+    
+    <!--container 3/6-->
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <h2 class=" fw-bold text-start">Effortless Travel Planning: Your Gateway to Unforgettable Experiences Starts With a Simpe Booking</h2>
+        <p>Plan your next trip with ease and confidence using our intuitive travel planning tools.</p>
+      </div>
+      <div class="col-md-4">
+        <img src="{% static 'planner/media/trip.jpg' %}" alt="Trip planning" class="img-fluid">
+      </div>
+    </div>
 
-        <img src="#" alt="Travel destination">
+
+    <!--container 4/6-->
+    <div class="row">
+      <h4>Destination container</h4>
     </div>
+
+
+    <!--container 5/6-->
+    <div class="row">
+      <h4>Review container</h4>
+      
     </div>
+
+    <!--container 6/6-->
+    <div class="row">
+      <div class="col-md-6 offset-md-3"><h5 class="display-6">Start Your Adventure Today!</h5>
+          <p>
+          Don't wait any longer, plan your trip with Wonderwaves and Explore the world!
+          </p>
+          <button class="btn btn-primary">
+            <a class="text-decoration-none text-light" href="#">Book now</a>
+          </button>
+          <button class="btn btn-outline-primary">Learn more</button>
+      </div>
+    </div>
+
+
   </div>
-  
-  <div class="row">
-    <div class="col-md-6 offset-md-3"><h5 class="display-6">Start Your Adventure Today!</h5>
-        <p>
-        Don't wait any longer, plan your trip with Wonderwaves and Explore the world!
-        </p>
-        <button class="btn btn-primary"><a class="text-decoration-none text-light" href="#">Book now</a></button>
-        <button class="btn btn-outline-primary">Learn more</button>
-    </div>
-  </div>
-</div>
 {% endblock %}
