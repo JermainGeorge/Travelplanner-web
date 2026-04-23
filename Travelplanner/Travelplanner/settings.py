@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'Users.apps.UsersConfig',
     'Bookings.apps.BookingsConfig',
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,4 +126,5 @@ LOGIN_REDIRECT_URL = 'planner-home'
 
 
 # installing crispy forms
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

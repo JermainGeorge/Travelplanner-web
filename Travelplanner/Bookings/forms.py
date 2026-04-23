@@ -7,7 +7,7 @@ class BookingForm(forms.ModelForm):
         fields = ['destination', 'accommodation', 'vehicle']
 
         widgets = {
-            'destination': forms.TextInput(attrs={'class': 'form-control'}),
+            'destination': forms.Select(attrs={'class': 'form-select'}),
             'accommodation': forms.Select(attrs={'class': 'form-select'}),
             'vehicle': forms.Select(attrs={'class': 'form-select'}),
         }

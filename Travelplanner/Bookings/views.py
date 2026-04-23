@@ -4,12 +4,10 @@ from .forms import BookingForm
 from .models import Booking
 
 
-def bookings(request):
-    return render(request, 'Bookings/bookings.html')
 
 
 @login_required
-def create_booking(request):
+def  bookings(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -21,10 +19,10 @@ def create_booking(request):
     else:
         form = BookingForm()
 
-    return render(request, 'booking/create_booking.html', {'form': form})
+    return render(request, 'Bookings/bookings.html', {'form': form})
 
 
 @login_required
 def receipts_view(request):
     bookings = Booking.objects.filter(user=request.user).order_by('-created_at')
-    return render(request, 'booking/receipts.html', {'bookings': bookings})
+    return render(request, 'Bookings/receipts.html', {'bookings': bookings})
