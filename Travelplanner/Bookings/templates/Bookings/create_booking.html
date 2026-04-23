@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h2>Create Booking</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Book Now</button>
+  </form>
+
+  <!-- Plain link (non-decorated like you wanted) -->
+  <p class="mt-3">
+    <a href="{% url 'receipts' %}" style="text-decoration: none; color: black;">
+      View Your Receipts
+    </a>
+  </p>
+</div>

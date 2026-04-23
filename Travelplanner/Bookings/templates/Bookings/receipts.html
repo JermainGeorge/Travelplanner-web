@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2>Your Bookings</h2>
+
+  {% for booking in bookings %}
+    <div class="card mb-3 p-3">
+      <p><strong>Destination:</strong> {{ booking.destination }}</p>
+      <p><strong>Accommodation:</strong> {{ booking.accommodation }}</p>
+      <p><strong>Vehicle:</strong> {{ booking.vehicle }}</p>
+      <p><small>{{ booking.created_at }}</small></p>
+    </div>
+  {% empty %}
+    <p>No bookings yet.</p>
+  {% endfor %}
+</div>

@@ -121,6 +121,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = 'users-login'
+LOGIN_REDIRECT_URL = 'planner-home'
+
 
 # installing crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
