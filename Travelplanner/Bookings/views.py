@@ -24,5 +24,5 @@ def  bookings(request):
 
 @login_required
 def receipts_view(request):
-    bookings = Booking.objects.filter(user=request.user).order_by('-created_at')
+    bookings = Booking.objects.filter(user=request.user).order_by('-date')
     return render(request, 'Bookings/receipts.html', {'bookings': bookings})
