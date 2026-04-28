@@ -6,33 +6,33 @@
 
     <!-- Sidebar -->
   <nav class="col-md-3 col-lg-2 d-md-block sidebar bg-primary position-sticky top-0">
-  <ul class="nav flex-column nav-pills text-center" id="sidebar" role="tablist">
+    <ul class="nav flex-column nav-pills text-center" id="sidebar" role="tablist">
 
-    <li class="nav-item">
-      <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#trip" type="button">
-        Trip Planner
-      </button>
-    </li>
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#trip" type="button">
+          Destination
+        </button>
+      </li>
 
-    <li class="nav-item">
-      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#accommodation" type="button">
-        Accommodation
-      </button>
-    </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#accommodation" type="button">
+          Accommodation
+        </button>
+      </li>
 
-    <li class="nav-item">
-      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#vehicles" type="button">
-        Vehicles
-      </button>
-    </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#vehicles" type="button">
+          Vehicles
+        </button>
+      </li>
 
-    <li class="nav-item">
-      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#receipts" type="button">
-        Receipts
-      </button>
-    </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#receipts" type="button">
+          Receipts
+        </button>
+      </li>
 
-  </ul>
+    </ul>
 </nav>
 
     <!-- Main Content -->
@@ -40,34 +40,46 @@
         <div class="tab-content">
 
             <div class="tab-pane fade show active" id="trip">
-            <h2>Trip Planner</h2>
+            <h2>Destination</h2>
             <!--Booking form -->
             <div class="container mt-5">
-
-              <h2>Create Booking</h2>
-
               <form method="POST">
                 {% csrf_token %}
-                {{ form|crispy }}
+                {{ d_form|crispy }}
 
-                <button type="submit" class="btn btn-primary">Book Now</button>
+                <button type="submit" name="destination_submit" class="btn btn-primary">Book Now</button>
               </form>
-
-              
-              <p class="mt-3">
-                <a href="{% url 'receipts' %}" style="text-decoration: none; color: black;">
-                  View Your Receipts
-                </a>
-              </p>
             </div>
             </div>
 
             <div class="tab-pane fade" id="accommodation">
             <h2>Accommodation</h2>
+            <div class="container mt-5">
+              <form method="POST">
+                {% csrf_token %}
+                {{ a_form|crispy }}
+
+                                <!-- Accommodation -->
+                <button type="submit" name="accommodation_submit" class="btn btn-primary">
+                  Book Now
+                </button>
+              </form>
+            </div>
             </div>
 
             <div class="tab-pane fade" id="vehicles">
             <h2>Vehicles</h2>
+            <div class="container mt-5">
+              <form method="POST">
+                {% csrf_token %}
+                {{ v_form|crispy }}
+
+                <!-- Vehicle -->
+                <button type="submit" name="vehicle_submit" class="btn btn-primary">
+                  Book Now
+                </button>
+              </form>
+            </div>
             </div>
 
             <div class="tab-pane fade" id="receipts">
