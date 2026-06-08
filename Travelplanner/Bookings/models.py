@@ -10,6 +10,7 @@ class Location(models.Model):
 
 
 class Destination(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
 
@@ -23,6 +24,7 @@ class Accommodation(models.Model):
         ('airbnb', 'Airbnb'),
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
 
@@ -39,7 +41,7 @@ class Vehicle(models.Model):
         ('bus', 'Bus'),
         ('suv', 'SUV'),
     ]
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     vehicle_type = models.CharField(max_length=20, choices=VEHICLE_TYPES)
     capacity = models.IntegerField()

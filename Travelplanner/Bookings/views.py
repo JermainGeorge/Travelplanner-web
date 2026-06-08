@@ -1,38 +1,66 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import BookingForm, DestinationFrom, AccommodationForm, VehicleForm
-from .models import Booking, Destination, Accommodation, Vehicle
+from .forms import DestinationForm, AccommodationForm, VehicleForm
+from .models import Booking
 
-# Creating views for each form to handle the booking process and display receipts
 @login_required
 def bookings(request):
-    d_form = DestinationFrom()
+    d_form = DestinationForm()
     a_form = AccommodationForm()
     v_form = VehicleForm()
 
     if request.method == 'POST':
+
+        # DESTINATION
         if 'destination_submit' in request.POST:
-            d_form = DestinationFrom(request.POST)
+            d_form = DestinationForm(request.POST)
             if d_form.is_valid():
                 obj = d_form.save(commit=False)
                 obj.user = request.user
                 obj.save()
-                return redirect('receipts')
 
+                request.session['destination_id'] = obj.id
+                return redirect('bookings')
+
+        # ACCOMMODATION
         elif 'accommodation_submit' in request.POST:
             a_form = AccommodationForm(request.POST)
             if a_form.is_valid():
                 obj = a_form.save(commit=False)
                 obj.user = request.user
                 obj.save()
-                return redirect('receipts')
 
+                request.session['accommodation_id'] = obj.id
+                return redirect('bookings')
+
+        # VEHICLE
         elif 'vehicle_submit' in request.POST:
             v_form = VehicleForm(request.POST)
             if v_form.is_valid():
                 obj = v_form.save(commit=False)
                 obj.user = request.user
                 obj.save()
+
+                request.session['vehicle_id'] = obj.id
+                return redirect('bookings')
+
+        # FINAL BOOKING
+        elif 'confirm_booking' in request.POST:
+            dest_id = request.session.get('destination_id')
+            acc_id = request.session.get('accommodation_id')
+            veh_id = request.session.get('vehicle_id')
+
+            if dest_id and acc_id and veh_id:
+                Booking.objects.create(
+                    user=request.user,
+                    destination_id=dest_id,
+                    accommodation_id=acc_id,
+                    vehicle_id=veh_id
+                )
+
+                # clear session
+                request.session.flush()
+
                 return redirect('receipts')
 
     return render(request, 'Bookings/bookings.html', {
@@ -40,7 +68,6 @@ def bookings(request):
         'a_form': a_form,
         'v_form': v_form,
     })
-
 
 @login_required
 def receipts_view(request):
