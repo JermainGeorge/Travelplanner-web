@@ -7,79 +7,54 @@
     <title>Wonderwaves</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" text=" text/css " href="{% static 'planner/css/main.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'planner/css/main.css' %}">
 
 </head>
-<body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="100" tabindex="0">
-
-<header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-blue-900 sticky-top py-4">
+<body>
+ <nav class="navbar navbar-expand-lg navbar-light bg-beach-peach">
   <div class="container-fluid">
-
-    <!-- Brand -->
-    <a class="navbar-brand" href="{% url 'planner-home' %}">Wonderwaves</a>
-
-    <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navbar content -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-
-      <!-- Left side -->
-      <ul class="navbar-nav me-auto">
+    <a class="navbar-brand" href="#">
+      Wonder Waves
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'planner-home' %}active{% endif %}" 
-             href="{% url 'planner-home' %}">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'planner-about' %}active{% endif %}" 
-             href="{% url 'planner-about' %}">About</a>
+          <a class="nav-link" href="#">Booking</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'nav-bookings' %}active{% endif %}" 
-             href="{% url 'nav-bookings' %}">Bookings</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Contact us
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">About us</a></li>
+            <li><a class="dropdown-item" href="#">Most Popular Destination</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Newsletter</a></li>
+          </ul>
         </li>
       </ul>
-
-      <!-- Right side -->
-      <ul class="navbar-nav ms-auto">
-
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <form action="{% url 'users-logout' %}" method="post" class="d-flex">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-link nav-link ">
-                Logout
-              </button>
-            </form>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'users-profile' %}">Profile</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'users-login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'users-register' %}">Sign up</a>
-          </li>
-        {% endif %}
-
-        <!-- Dark mode toggle -->
-        <li class="nav-item">
-          <button id="darkModeToggle" class="btn btn-outline-secondary ms-2">
-            <span class="bi bi-moon"></span>
-          </button>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="nav item">
+          <a class="nav-link text-decoration-none" href="#">Profile</a>
         </li>
-
+        <li class="nav item">
+          <a class="nav-link text-decoration-none" href="#">Logout</a>
+        </li>
+        <li class="nav item">
+          <a class="nav-link text-decoration-none" href="#">Log in</a>
       </ul>
-
     </div>
   </div>
 </nav>
-</header>
 
 <main class="flex-grow-1">
     {% block content %}
@@ -95,9 +70,9 @@
         <div class="col">
             <h6 class="row">Quick Links</h6>
             <a class="row text-dark text-decoration-none" href="#">Home</a>
-            <a class="row text-dark text-decoration-none" href="#">About use</a>
+            <a class="row text-dark text-decoration-none" href="#">About us</a>
             <a class="row text-dark text-decoration-none" href="#">Profile</a>
-            <a class="row text-dark text-decoration-none" href="#">logout</a>
+            <a class="row text-dark text-decoration-none" href="#">Logout</a>
             <a class="row text-dark text-decoration-none" href="#">Log in</a>
         </div>
         <div class="col">
@@ -116,10 +91,7 @@
         </div>
         <div class="Sub-to-newsletter col">
             <h6>Join our newsletter for the latest travel updates and exclusive deals</h6>
-            <form  class= "row" action="#" method="post">
-                <input class="col pr-3" type="email" name="email" placeholder="Enter your email" required>
-                <button  type="submit" class="btn btn-primary col pl-3">Subscribe</button>
-            </form>
+            
             <h6>By subscribing, you agree to our Privacy Policy and consent to receiving our updates</h6>
         </div>
         </div>
@@ -128,27 +100,5 @@
     </footer>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Dark mode script -->
-<script>
-  const toggleBtn = document.getElementById("darkModeToggle");
-
-  // Load saved mode
-  if (localStorage.getItem("darkMode") === "enabled") {
-    document.body.classList.add("bg-dark", "text-light");
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("bg-dark");
-    document.body.classList.toggle("text-light");
-
-    if (document.body.classList.contains("bg-dark")) {
-      localStorage.setItem("darkMode", "enabled");
-    } else {
-      localStorage.setItem("darkMode", "disabled");
-    }
-  });
-</script>
-
 </body>
 </html>
