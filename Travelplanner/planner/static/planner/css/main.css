@@ -1,10 +1,230 @@
 .bg-beach-peach {
     background-color: #FFDAB9;
 }
+
+html,
 body {
-    padding-top: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
 }
 
 .navbar {
     z-index: 1030;
+}
+
+.top-navbar {
+    margin-top: 0;
+}
+
+.top-nav-link {
+    position: relative;
+}
+
+.top-nav-link::after {
+    background: #003b95;
+    border-radius: 999px;
+    bottom: 4px;
+    content: "";
+    height: 3px;
+    left: 0.75rem;
+    opacity: 0;
+    position: absolute;
+    right: 0.75rem;
+    transform: scaleX(0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.top-nav-link.active::after,
+.top-nav-link:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.home-hero {
+    background:
+        linear-gradient(rgba(0, 59, 149, 0.74), rgba(0, 59, 149, 0.58)),
+        url("../media/destination.jpg") center/cover;
+    color: #fff;
+    padding: 82px 0 72px;
+}
+
+.home-kicker {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 18px;
+    max-width: 720px;
+}
+
+.home-intro {
+    font-size: 1.1rem;
+    max-width: 620px;
+}
+
+.wonder-card,
+.booking-form-card,
+.receipt-card,
+.destination-card {
+    border: 0;
+    border-radius: 16px;
+    box-shadow: 0 14px 32px rgba(31, 41, 55, 0.14);
+}
+
+.destination-section {
+    padding-bottom: 56px;
+}
+
+.destination-tabs {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.destination-tab {
+    border: 1px solid #d8dee9;
+    border-radius: 999px;
+    color: #1f2937;
+    font-weight: 600;
+    padding: 10px 22px;
+}
+
+.destination-tab:hover,
+.destination-tab:focus {
+    background: #eef5ff;
+    color: #003b95;
+}
+
+.destination-tabs .nav-pills .nav-link.active,
+.destination-tabs .nav-pills .show > .nav-link {
+    background: #003b95;
+    box-shadow: 0 10px 22px rgba(0, 59, 149, 0.24);
+    color: #fff;
+}
+
+.destination-card {
+    background: #fff;
+    height: 100%;
+    overflow: hidden;
+}
+
+.destination-card img {
+    aspect-ratio: 4 / 3;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+.destination-card-body {
+    padding: 20px;
+}
+
+.destination-card-body h5 {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.destination-card-body p {
+    color: #4b5563;
+    margin-bottom: 16px;
+}
+
+.destination-price {
+    color: #003b95;
+    display: inline-block;
+    font-weight: 800;
+}
+
+.booking-dashboard {
+    background: #f5f7fb;
+    min-height: 70vh;
+}
+
+.booking-tabs {
+    background: #003b95;
+    padding: 12px 32px;
+}
+
+.booking-tabs .nav {
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.booking-tab {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: #fff;
+    display: flex;
+    gap: 10px;
+    padding: 12px 22px;
+}
+
+.booking-tab i {
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+.booking-tabs .nav-pills .nav-link.active,
+.booking-tabs .nav-pills .show > .nav-link {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #fff;
+    color: #fff;
+}
+
+.booking-tab:hover,
+.booking-tab:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.booking-panel {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    padding: 32px;
+}
+
+.booking-form-card {
+    background: #fff;
+    padding: 24px;
+}
+
+.receipt-card {
+    border: 0;
+}
+
+@media (max-width: 576px) {
+    .home-hero {
+        padding: 58px 0 50px;
+    }
+
+    .destination-tabs .nav {
+        justify-content: flex-start !important;
+    }
+
+    .destination-tab {
+        padding: 9px 16px;
+    }
+
+    .booking-tabs {
+        padding: 10px 12px;
+    }
+
+    .booking-tab {
+        padding: 10px 14px;
+    }
+
+    .booking-panel {
+        padding: 20px;
+    }
 }

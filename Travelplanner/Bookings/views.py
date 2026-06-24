@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from .forms import DestinationForm, AccommodationForm, VehicleForm
-from .models import Booking
+from .models import Accommodation, Booking, Destination, Vehicle
 
 @login_required
 def bookings(request):
@@ -51,15 +52,29 @@ def bookings(request):
             veh_id = request.session.get('vehicle_id')
 
             if dest_id and acc_id and veh_id:
-                Booking.objects.create(
-                    user=request.user,
-                    destination_id=dest_id,
-                    accommodation_id=acc_id,
-                    vehicle_id=veh_id
+                destination = Destination.objects.get(id=dest_id, user=request.user)
+                accommodation = Accommodation.objects.get(id=acc_id, user=request.user)
+                vehicle = Vehicle.objects.get(id=veh_id, user=request.user)
+                total_price = (
+                    destination.estimated_price
+                    + accommodation.price_per_night
+                    + vehicle.price_per_day
                 )
 
-                # clear session
-                request.session.flush()
+                Booking.objects.create(
+                    user=request.user,
+                    destination=destination,
+                    accommodation=accommodation,
+                    vehicle=vehicle,
+                    date=timezone.now().date(),
+                    payment_method=request.POST.get('payment_method', 'mobile_money'),
+                    status='confirmed',
+                    total_price=total_price
+                )
+
+                request.session.pop('destination_id', None)
+                request.session.pop('accommodation_id', None)
+                request.session.pop('vehicle_id', None)
 
                 return redirect('receipts')
 

@@ -4,7 +4,7 @@ from .models import Destination, Accommodation, Vehicle
 class DestinationForm(forms.ModelForm):
     class Meta:
         model = Destination
-        fields = ['name', 'location']
+        fields = ['name', 'location', 'category', 'description', 'estimated_price', 'image_url']
 
 class AccommodationForm(forms.ModelForm):
     class Meta:

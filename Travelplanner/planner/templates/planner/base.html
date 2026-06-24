@@ -2,23 +2,32 @@
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-beach-peach py-3 sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-beach-peach py-3 sticky-top top-navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             Wonder Waves
         </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active"
+                <a class="nav-link top-nav-link {% if request.resolver_match.url_name == 'planner-home' %}active{% endif %}"
                    href="{% url 'planner-home' %}">
                     Home
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link"
+                <a class="nav-link top-nav-link {% if request.resolver_match.url_name == 'nav-bookings' %}active{% endif %}"
                    href="{% url 'nav-bookings' %}">
                     Booking
                 </a>
@@ -108,7 +117,6 @@
         </ul>
     </div>
 </div>
-```
 
 </nav>
 
@@ -121,7 +129,7 @@
     <div class="container text-center">
         <div class="row align-items-start">
 
-```
+
         <div class="col">
             <h6>Wonderwaves</h6>
         </div>
@@ -177,7 +185,7 @@
 
     <p>&copy; 2023 Wonderwaves. All rights reserved.</p>
 </div>
-```
+
 
 </footer>
 

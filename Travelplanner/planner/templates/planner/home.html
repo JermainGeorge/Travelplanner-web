@@ -1,42 +1,200 @@
 {% extends 'planner/base.html' %}
+{% load static %}
 
 {% block page_content %}
 
 
-<h2 class="text-start fw-bold text-uppercase mt-5 px-3 ">
-    Welcome to Wonder Waves! Your ultimate travel planning companion.
-</h2>
+<section class="home-hero">
+  <div class="container">
+    <p class="home-kicker">Plan smarter trips across Kenya</p>
+    <h1>Welcome to Wonder Waves</h1>
+    <p class="home-intro">Find coastal escapes, safari routes, historical tours, and backpacking adventures with helpful details before you book.</p>
+  </div>
+</section>
 
- <h4 class="fw-bold mt-4 mx-3">Why Wonder Waves?</h4>
-<div class="container">
-  <div class="row">
-    <div class="col p-3 my-3 mx-3 bg-beach-peach text-dark">
+<section class="container py-4">
+ <h4 class="fw-bold mb-3">Why Wonder Waves?</h4>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="p-4 bg-beach-peach text-dark wonder-card h-100">
        
-        <P>Wonder Waves offers the most comprehensive travel planning tools to make your journey seamless and unforgettable.</P>
+        <h5 class="fw-bold">Efficient Travel Planning</h5>
+        <p>Wonder Waves keeps your planning fast and organized, helping you compare details, book with confidence, and manage each step from one platform.</p>
+      </div>
     </div>
-    <div class="col p-3 my-3 mx-3 bg-beach-peach border">
-      Column
+    <div class="col-md-4">
+      <div class="p-4 bg-beach-peach text-dark wonder-card h-100">
+      <h5 class="fw-bold">Flexible Payment Methods</h5>
+      <p>Book your trip with convenient payment options, including card payments, mobile money, and secure online checkout.</p>
+      </div>
     </div>
-    <div class="col p-3 my-3 mx-3 bg-beach-peach text-dark">
-      Column
+    <div class="col-md-4">
+      <div class="p-4 bg-beach-peach text-dark wonder-card h-100">
+      <h5 class="fw-bold">Travel Destinations in Kenya</h5>
+      <p>Explore Kenya's coast, national parks, mountain trails, and vibrant cities, from Diani and Mombasa to Maasai Mara, Nakuru, and Nairobi.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<nav class="navbar navbar-expand-lg navbar-light py-4">
-    <ul class="navbar-nav mx-auto mb-4 mb-lg-0 ">
-        <li class="nav-item col mx-3">
-            <a class="text-decoration-none text-dark fw-light">Coastal</a>
+<section class="container destination-section py-4">
+<nav class="destination-tabs py-3">
+    <ul class="nav nav-pills justify-content-center gap-3" id="destinationTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link destination-tab active" id="coastal-tab" data-bs-toggle="pill" href="#coastal" role="tab" aria-controls="coastal" aria-selected="true">Coastal</a>
         </li>
-        <li class="nav-item col mx-5">
-            <a class="text-decoration-none text-dark fw-light">Safaris</a>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link destination-tab" id="safaris-tab" data-bs-toggle="pill" href="#safaris" role="tab" aria-controls="safaris" aria-selected="false">Safaris</a>
         </li>
-        <li class="nav-item col mx-5">
-            <a class="text-decoration-none text-dark fw-light">Historical Tours</a>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link destination-tab" id="historical-tab" data-bs-toggle="pill" href="#historical" role="tab" aria-controls="historical" aria-selected="false">Historical Tours</a>
         </li>
-        <li class="nav-item col mx-5">
-            <a class="text-decoration-none text-dark fw-light">Backpacking</a>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link destination-tab" id="backpacking-tab" data-bs-toggle="pill" href="#backpacking" role="tab" aria-controls="backpacking" aria-selected="false">Backpacking</a>
         </li>
     </ul>
 </nav>
+
+<div class="tab-content destination-content pt-3">
+  <div class="tab-pane fade show active" id="coastal" role="tabpanel" aria-labelledby="coastal-tab" tabindex="0">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/boat.jpg' %}" alt="Diani Beach coast">
+          <div class="destination-card-body">
+            <h5>Diani Beach</h5>
+            <p>White sand beaches, snorkeling, beach resorts, and relaxed coastal evenings.</p>
+            <span class="destination-price">From KSh 18,500</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/destination.jpg' %}" alt="Mombasa coastal destination">
+          <div class="destination-card-body">
+            <h5>Mombasa Old Town</h5>
+            <p>Coastal culture, Fort Jesus, spice markets, and Swahili architecture.</p>
+            <span class="destination-price">From KSh 12,000</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/trip.jpg' %}" alt="Watamu travel route">
+          <div class="destination-card-body">
+            <h5>Watamu</h5>
+            <p>Marine parks, creek tours, seafood stops, and quiet beach stays.</p>
+            <span class="destination-price">From KSh 16,800</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="safaris" role="tabpanel" aria-labelledby="safaris-tab" tabindex="0">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/destination.jpg' %}" alt="Maasai Mara safari">
+          <div class="destination-card-body">
+            <h5>Maasai Mara</h5>
+            <p>Game drives, open savannah views, lodges, and guided wildlife experiences.</p>
+            <span class="destination-price">From KSh 32,000</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/trip.jpg' %}" alt="Amboseli safari">
+          <div class="destination-card-body">
+            <h5>Amboseli</h5>
+            <p>Elephant herds, Kilimanjaro views, nature photography, and lodge stays.</p>
+            <span class="destination-price">From KSh 28,500</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/boat.jpg' %}" alt="Lake Nakuru park">
+          <div class="destination-card-body">
+            <h5>Lake Nakuru</h5>
+            <p>Birdwatching, rhino sightings, lakeside drives, and scenic viewpoints.</p>
+            <span class="destination-price">From KSh 21,000</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab" tabindex="0">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/destination.jpg' %}" alt="Fort Jesus historical tour">
+          <div class="destination-card-body">
+            <h5>Fort Jesus</h5>
+            <p>Guided museum visits, coastal history, and old harbor viewpoints.</p>
+            <span class="destination-price">From KSh 7,500</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/trip.jpg' %}" alt="Lamu historical tour">
+          <div class="destination-card-body">
+            <h5>Lamu Island</h5>
+            <p>Swahili heritage walks, dhow trips, narrow streets, and cultural stays.</p>
+            <span class="destination-price">From KSh 24,000</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/boat.jpg' %}" alt="Nairobi museum tour">
+          <div class="destination-card-body">
+            <h5>Nairobi Museums</h5>
+            <p>City history, art collections, cultural exhibits, and half-day tours.</p>
+            <span class="destination-price">From KSh 6,500</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="backpacking" role="tabpanel" aria-labelledby="backpacking-tab" tabindex="0">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/trip.jpg' %}" alt="Mount Kenya backpacking">
+          <div class="destination-card-body">
+            <h5>Mount Kenya</h5>
+            <p>Guided hikes, mountain huts, forest trails, and multi-day adventure routes.</p>
+            <span class="destination-price">From KSh 26,000</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/boat.jpg' %}" alt="Naivasha backpacking trip">
+          <div class="destination-card-body">
+            <h5>Naivasha</h5>
+            <p>Budget stays, lake trips, cycling routes, and weekend group travel.</p>
+            <span class="destination-price">From KSh 9,500</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="destination-card">
+          <img src="{% static 'planner/media/destination.jpg' %}" alt="Rift Valley backpacking">
+          <div class="destination-card-body">
+            <h5>Rift Valley</h5>
+            <p>Scenic stops, viewpoints, simple stays, and flexible road-trip planning.</p>
+            <span class="destination-price">From KSh 14,000</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 {% endblock %}
