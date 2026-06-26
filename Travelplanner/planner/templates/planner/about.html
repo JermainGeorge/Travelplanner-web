@@ -1,6 +1,74 @@
 {% extends 'planner/base.html' %}
-{% block content %}
-    <div>
-        <p>This is the about page </p>
+{% load static %}
+
+{% block page_content %}
+<section class="page-hero page-hero-about">
+    <div class="container">
+        <p class="home-kicker">About Wonder Waves</p>
+        <h1>Travel planning made clearer, warmer, and easier.</h1>
+        <p class="home-intro">Wonder Waves helps travelers discover Kenya's coast, parks, historic towns, and scenic routes with practical details before they book.</p>
     </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+            <h2 class="section-title">Built for memorable Kenyan trips</h2>
+            <p class="section-copy">We bring destination ideas, booking details, accommodation planning, vehicle options, and payment steps into one simple travel experience. Whether someone is planning a beach weekend in Diani, a family safari, or a quiet heritage trip to Lamu, Wonder Waves keeps the journey organized from the first idea to the final receipt.</p>
+            <p class="section-copy">Our focus is local knowledge, realistic prices, clear choices, and trips that match how people actually travel.</p>
+        </div>
+        <div class="col-lg-6">
+            <img class="page-feature-image" src="{% static 'planner/media/Diani_coast.jpg' %}" alt="Diani coast">
+        </div>
+    </div>
+</section>
+
+<section class="container pb-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="info-card h-100">
+                <i class="bi bi-map"></i>
+                <h5>Curated Destinations</h5>
+                <p>Browse coastal escapes, safari routes, historical tours, and backpacking ideas arranged around real traveler needs.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-card h-100">
+                <i class="bi bi-calendar-check"></i>
+                <h5>Smoother Planning</h5>
+                <p>Compare prices, capture trip details, and move from destination choice to booking without losing track of the basics.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-card h-100">
+                <i class="bi bi-credit-card"></i>
+                <h5>Flexible Booking</h5>
+                <p>Plan trips with accommodation, transport, and payment options that make the booking process feel straightforward.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="highlight-band py-5">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-md-3 col-6">
+                <strong>12+</strong>
+                <span>Featured routes</span>
+            </div>
+            <div class="col-md-3 col-6">
+                <strong>4</strong>
+                <span>Travel categories</span>
+            </div>
+            <div class="col-md-3 col-6">
+                <strong>24/7</strong>
+                <span>Planning access</span>
+            </div>
+            <div class="col-md-3 col-6">
+                <strong>KSh</strong>
+                <span>Local pricing</span>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

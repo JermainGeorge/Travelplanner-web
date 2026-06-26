@@ -16,9 +16,7 @@ def bookings(request):
         if 'destination_submit' in request.POST:
             d_form = DestinationForm(request.POST)
             if d_form.is_valid():
-                obj = d_form.save(commit=False)
-                obj.user = request.user
-                obj.save()
+                obj = d_form.cleaned_data['destination']
 
                 request.session['destination_id'] = obj.id
                 return redirect('bookings')
@@ -27,9 +25,7 @@ def bookings(request):
         elif 'accommodation_submit' in request.POST:
             a_form = AccommodationForm(request.POST)
             if a_form.is_valid():
-                obj = a_form.save(commit=False)
-                obj.user = request.user
-                obj.save()
+                obj = a_form.cleaned_data['accommodation']
 
                 request.session['accommodation_id'] = obj.id
                 return redirect('bookings')
@@ -38,9 +34,7 @@ def bookings(request):
         elif 'vehicle_submit' in request.POST:
             v_form = VehicleForm(request.POST)
             if v_form.is_valid():
-                obj = v_form.save(commit=False)
-                obj.user = request.user
-                obj.save()
+                obj = v_form.cleaned_data['vehicle']
 
                 request.session['vehicle_id'] = obj.id
                 return redirect('bookings')
@@ -52,9 +46,9 @@ def bookings(request):
             veh_id = request.session.get('vehicle_id')
 
             if dest_id and acc_id and veh_id:
-                destination = Destination.objects.get(id=dest_id, user=request.user)
-                accommodation = Accommodation.objects.get(id=acc_id, user=request.user)
-                vehicle = Vehicle.objects.get(id=veh_id, user=request.user)
+                destination = Destination.objects.get(id=dest_id)
+                accommodation = Accommodation.objects.get(id=acc_id)
+                vehicle = Vehicle.objects.get(id=veh_id)
                 total_price = (
                     destination.estimated_price
                     + accommodation.price_per_night

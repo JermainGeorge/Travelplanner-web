@@ -26,7 +26,7 @@ class Destination(models.Model):
     image_url = models.URLField(blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.location})"
 
 
 class Accommodation(models.Model):
@@ -59,7 +59,7 @@ class Vehicle(models.Model):
     price_per_day = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.get_vehicle_type_display()}, {self.capacity} seats)"
 
 
 class Booking(models.Model):

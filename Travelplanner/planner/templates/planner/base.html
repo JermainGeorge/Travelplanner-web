@@ -1,11 +1,13 @@
 {% extends 'planner/base_auth.html' %}
+{% load static %}
 
 {% block content %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-beach-peach py-3 sticky-top top-navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            Wonder Waves
+        <a class="navbar-brand brand-logo" href="{% url 'planner-home' %}">
+            <img src="{% static 'planner/media/logo.png' %}" alt="Wonder Waves logo">
+            <span>Wonder Waves</span>
         </a>
         <button class="navbar-toggler"
                 type="button"

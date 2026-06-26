@@ -1,6 +1,94 @@
 {% extends 'planner/base.html' %}
-{% block content %}
-    <div>
-        <p>These are the most popular destinations </p>
+{% load static %}
+
+{% block page_content %}
+<section class="page-hero page-hero-destinations">
+    <div class="container">
+        <p class="home-kicker">Popular Destinations</p>
+        <h1>Favorite trips across Kenya.</h1>
+        <p class="home-intro">Explore beach towns, heritage islands, safari landscapes, and flexible weekend escapes that travelers keep coming back to.</p>
     </div>
+</section>
+
+<section class="container destination-section py-5">
+    <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+            <article class="destination-card">
+                <img src="{% static 'planner/media/Diani_coast.jpg' %}" alt="Diani Beach">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Coastal</span>
+                    <h5>Diani Beach</h5>
+                    <p>Soft sand, snorkeling, beach resorts, and warm evenings along the south coast.</p>
+                    <span class="destination-price">From KSh 18,500</span>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <article class="destination-card">
+                <img src="{% static 'planner/media/Mombasa_coast.jpg' %}" alt="Mombasa coastline">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Coastal</span>
+                    <h5>Mombasa</h5>
+                    <p>Oceanfront stays, Fort Jesus, Swahili food, markets, and easy city access.</p>
+                    <span class="destination-price">From KSh 12,000</span>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <article class="destination-card">
+                <img src="{% static 'planner/media/Malindi_coast.jpg' %}" alt="Malindi coast">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Coastal</span>
+                    <h5>Malindi</h5>
+                    <p>Marine parks, golden beaches, relaxed hotels, and a bright seaside food scene.</p>
+                    <span class="destination-price">From KSh 16,800</span>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <article class="destination-card">
+                <img src="{% static 'planner/media/lamu_coast.jpg' %}" alt="Lamu Island">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Heritage</span>
+                    <h5>Lamu Island</h5>
+                    <p>Dhow trips, Swahili architecture, quiet lanes, and peaceful waterfront stays.</p>
+                    <span class="destination-price">From KSh 24,000</span>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <article class="destination-card destination-card-wide">
+                <img src="{% static 'planner/media/destination.jpg' %}" alt="Maasai Mara safari">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Safari</span>
+                    <h5>Maasai Mara</h5>
+                    <p>Open savannah drives, wildlife viewing, lodge stays, and guided photography moments.</p>
+                    <span class="destination-price">From KSh 32,000</span>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <article class="destination-card destination-card-wide">
+                <img src="{% static 'planner/media/trip.jpg' %}" alt="Mount Kenya trail">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Backpacking</span>
+                    <h5>Mount Kenya</h5>
+                    <p>Forest trails, guided hikes, mountain huts, and multi-day adventure routes.</p>
+                    <span class="destination-price">From KSh 26,000</span>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <article class="destination-card destination-card-wide">
+                <img src="{% static 'planner/media/boat.jpg' %}" alt="Lake Nakuru trip">
+                <div class="destination-card-body">
+                    <span class="destination-tag">Safari</span>
+                    <h5>Lake Nakuru</h5>
+                    <p>Birdwatching, rhino sightings, lakeside drives, and scenic viewpoints.</p>
+                    <span class="destination-price">From KSh 21,000</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
 {% endblock %}

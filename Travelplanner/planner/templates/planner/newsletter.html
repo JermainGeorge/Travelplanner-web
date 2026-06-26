@@ -1,6 +1,84 @@
 {% extends 'planner/base.html' %}
-{% block content %}
-    <div>
-        <p>This are the most resent updates</p>
+{% load static %}
+
+{% block page_content %}
+<section class="page-hero page-hero-newsletter">
+    <div class="container">
+        <p class="home-kicker">Wonder Waves Newsletter</p>
+        <h1>Travel updates, trip ideas, and local deals.</h1>
+        <p class="home-intro">Get coastal offers, safari planning notes, seasonal travel ideas, and new destination highlights before your next trip.</p>
     </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+            <div class="newsletter-panel">
+                <h2>Join the travel list</h2>
+                <p>Fresh destination ideas, booking reminders, and Kenya travel updates sent straight to your inbox.</p>
+                <form>
+                    <label class="form-label" for="newsletter-name">Name</label>
+                    <input class="form-control mb-3" id="newsletter-name" type="text" placeholder="Your name">
+
+                    <label class="form-label" for="newsletter-email">Email address</label>
+                    <input class="form-control mb-3" id="newsletter-email" type="email" placeholder="you@example.com">
+
+                    <label class="form-label" for="newsletter-interest">Travel interest</label>
+                    <select class="form-select mb-4" id="newsletter-interest">
+                        <option>Coastal escapes</option>
+                        <option>Safaris</option>
+                        <option>Historical tours</option>
+                        <option>Backpacking</option>
+                    </select>
+
+                    <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <article class="update-card h-100">
+                        <img src="{% static 'planner/media/Malindi_coast.jpg' %}" alt="Malindi coast">
+                        <div>
+                            <span>Coast Watch</span>
+                            <h5>Malindi and Watamu beach weekends</h5>
+                            <p>Plan for marine park visits, seafood stops, beach walks, and relaxed two-night stays along the north coast.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="update-card h-100">
+                        <img src="{% static 'planner/media/destination.jpg' %}" alt="Safari landscape">
+                        <div>
+                            <span>Safari Notes</span>
+                            <h5>Booking early for peak safari dates</h5>
+                            <p>Reserve lodges and vehicles ahead of school holidays to keep routes flexible and prices predictable.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="update-card h-100">
+                        <img src="{% static 'planner/media/lamu_coast.jpg' %}" alt="Lamu coast">
+                        <div>
+                            <span>Heritage Trips</span>
+                            <h5>Lamu cultural stays</h5>
+                            <p>Combine walking tours, dhow sailing, Swahili architecture, and quiet waterfront evenings.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="update-card h-100">
+                        <img src="{% static 'planner/media/trip.jpg' %}" alt="Backpacking route">
+                        <div>
+                            <span>Trail Ideas</span>
+                            <h5>Budget-friendly weekend routes</h5>
+                            <p>Use group transport, simple stays, and short activity lists to make quick trips easier to plan.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

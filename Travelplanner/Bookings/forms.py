@@ -1,17 +1,38 @@
 from django import forms
 from .models import Destination, Accommodation, Vehicle
 
-class DestinationForm(forms.ModelForm):
-    class Meta:
-        model = Destination
-        fields = ['name', 'location', 'category', 'description', 'estimated_price', 'image_url']
+class DestinationForm(forms.Form):
+    destination = forms.ModelChoiceField(
+        queryset=Destination.objects.none(),
+        empty_label="Choose a destination",
+        label="Destination",
+        widget=forms.Select(attrs={"class": "form-select"}),
+    )
 
-class AccommodationForm(forms.ModelForm):
-    class Meta:
-        model = Accommodation
-        fields = ['name', 'location', 'type', 'price_per_night']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['destination'].queryset = Destination.objects.select_related('location').order_by('name')
 
-class VehicleForm(forms.ModelForm):
-    class Meta:
-        model = Vehicle
-        fields = ['name', 'vehicle_type', 'capacity', 'price_per_day']
+class AccommodationForm(forms.Form):
+    accommodation = forms.ModelChoiceField(
+        queryset=Accommodation.objects.none(),
+        empty_label="Choose a stay",
+        label="Stay",
+        widget=forms.Select(attrs={"class": "form-select"}),
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['accommodation'].queryset = Accommodation.objects.select_related('location').order_by('name')
+
+class VehicleForm(forms.Form):
+    vehicle = forms.ModelChoiceField(
+        queryset=Vehicle.objects.none(),
+        empty_label="Choose a rental vehicle",
+        label="Car rental",
+        widget=forms.Select(attrs={"class": "form-select"}),
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['vehicle'].queryset = Vehicle.objects.order_by('name')
