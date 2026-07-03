@@ -7,7 +7,6 @@
     <div class="container-fluid">
         <a class="navbar-brand brand-logo" href="{% url 'planner-home' %}">
             <img src="{% static 'planner/media/logo.png' %}" alt="Wonder Waves logo">
-            <span>Wonder Waves</span>
         </a>
         <button class="navbar-toggler"
                 type="button"
@@ -36,16 +35,13 @@
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   data-bs-toggle="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                     Contact us
                 </a>
 
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="dropdown-item"
-                           href="{% url 'planner-about' %}">
+                        <a class="dropdown-item" href="{% url 'planner-about' %}">
                             About us
                         </a>
                     </li>
@@ -68,18 +64,17 @@
                 </ul>
             </li>
         </ul>
-
+    <!--The search button should be able to search for any booking entity-->
         <form class="d-flex">
-            <input class="form-control me-2"
-                   type="search"
-                   placeholder="Search">
+    <input class="form-control me-2"
+           type="search"
+           placeholder="Search">
 
-            <button class="btn btn-outline-success"
-                    type="submit"
-                    style="color: black;">
-                Search
-            </button>
-        </form>
+    <button class="btn search-btn"
+            type="submit">
+        Search
+    </button>
+</form>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 

@@ -1,5 +1,5 @@
 .bg-beach-peach {
-    background-color: #FFDAB9;
+    background-color: #FCCE9F;
 }
 
 html,
@@ -28,11 +28,10 @@ body {
 }
 
 .brand-logo img {
-    height: 42px;
-    object-fit: contain;
-    width: 42px;
+    width: 150px;
+    max-height: 70px;
+    height: auto;
 }
-
 .top-nav-link {
     position: relative;
 }
@@ -55,6 +54,19 @@ body {
 .top-nav-link:hover::after {
     opacity: 1;
     transform: scaleX(1);
+}
+
+.search-btn {
+    color: #080000;
+    border: 1px solid #01255b;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #003b95; /* Blue background */
+    color: white;
+    border-color: #003b95;
 }
 
 .home-hero {
