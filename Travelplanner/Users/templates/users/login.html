@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <div class="container p-3 my-3 bg-black text-white rounded">
-    <h4>Welcome Back</h4>
-
-    <div class="card p-4 shadow bg-dark text-white">
+<div class="auth-page">
+    <div class="auth-card">
+        <h4 class="mb-2">Welcome Back</h4>
+        <p class="mb-4">Log in to continue planning your next WonderWaves trip.</p>
         <form method="POST">
             {% csrf_token %}
 
@@ -16,16 +16,16 @@
             </fieldset>
 
             <div class="mt-3">
-                <button class="btn btn-outline-info" type="submit">
+                <button class="btn wonder-btn w-100" type="submit">
                     Log In
                 </button>
             </div>
         </form>
 
         <div class="border-top pt-3 mt-3">
-            <small class="text-white">
+            <small>
                 Need an account?
-                <a class="ms-2 text-decoration-none text-info"
+                <a class="ms-2 text-decoration-none"
                    href="{% url 'users-register' %}">
                     Sign Up Now
                 </a>

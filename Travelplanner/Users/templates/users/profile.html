@@ -1,12 +1,13 @@
-{% extends 'planner/base.html' %}
+{% extends 'planner/base_auth.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-      <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
+<div class="auth-page">
+    <div class="auth-card">
+      <div class="d-flex flex-column align-items-center text-center mb-4">
+        <img class="rounded-circle account-img mb-3" src="{{ user.profile.image.url }}" alt="{{ user.username }} profile image">
+        <div>
+          <h2 class="account-heading h3 mb-1">{{ user.username }}</h2>
+          <p class="text-secondary mb-0">{{ user.email }}</p>
         </div>
       </div>
       <!-- FORM HERE -->
@@ -19,8 +20,9 @@
                 {{ p_form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Save Changes</button>
+                <button class="btn wonder-btn w-100" type="submit">Save Changes</button>
             </div>
         </form>
     </div>
+</div>
 {% endblock content %}

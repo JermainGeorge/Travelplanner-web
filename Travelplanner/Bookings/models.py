@@ -54,12 +54,14 @@ class Vehicle(models.Model):
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True, blank=True)
     vehicle_type = models.CharField(max_length=20, choices=VEHICLE_TYPES)
     capacity = models.IntegerField()
     price_per_day = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.name} ({self.get_vehicle_type_display()}, {self.capacity} seats)"
+        location = f" - {self.location}" if self.location else ""
+        return f"{self.name}{location} ({self.get_vehicle_type_display()}, {self.capacity} seats)"
 
 
 class Booking(models.Model):

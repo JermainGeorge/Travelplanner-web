@@ -1,19 +1,11 @@
+{% extends "planner/base_auth.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row min-vh-100">
-        
-        <!-- Left side (branding/info) -->
-        <div class="col-md-6 bg-primary text-white d-flex flex-column justify-content-center p-5">
-        <h1>Welcome to WonderWaves</h1>
-        <p>Discover and book your next adventure easily.</p>
-        </div>
-
-        <!-- Right side (form) -->
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-        <div class="col-md-8">
-            <div class="card p-4 shadow">
+<div class="auth-page">
+    <div class="auth-card">
+            <h1 class="h3 mb-2">Welcome to WonderWaves</h1>
+            <p class="mb-4">Create your account and start booking beach escapes with ease.</p>
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -21,18 +13,14 @@
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                    <button class="btn wonder-btn w-100" type="submit">Sign Up</button>
                 </div>
             </form>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    Already Have An Account? <a class="ml-2" href="{% url 'users-login'%}">log In</a>
+            <div class="border-top pt-3 mt-3">
+                <small>
+                    Already have an account? <a class="ms-2 text-decoration-none" href="{% url 'users-login'%}">Log In</a>
                 </small>
             </div>
-            </div>
-        </div>
-        </div>
-
     </div>
 </div>
 {% endblock content %}

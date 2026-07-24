@@ -2,6 +2,15 @@
     background-color: #FCCE9F;
 }
 
+:root {
+    --wonder-blue: #003b95;
+    --wonder-blue-dark: #01255b;
+    --beach-peach: #FCCE9F;
+    --beach-peach-soft: #fff1df;
+    --ink: #111827;
+    --muted: #4b5563;
+}
+
 html,
 body {
     margin: 0;
@@ -380,13 +389,207 @@ body {
     padding: 32px;
 }
 
+.booking-step {
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.booking-step h2 {
+    color: var(--wonder-blue);
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.booking-step-copy {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
 .booking-form-card {
     background: #fff;
+    border: 1px solid rgba(0, 59, 149, 0.12);
+    border-radius: 14px;
     padding: 24px;
+}
+
+.booking-form-card .form-control,
+.booking-form-card .form-select {
+    border-color: rgba(0, 59, 149, 0.22);
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+}
+
+.booking-form-card .form-control:focus,
+.booking-form-card .form-select:focus {
+    border-color: var(--wonder-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 59, 149, 0.14);
+}
+
+.booking-next-btn,
+.booking-confirm-btn {
+    background: var(--beach-peach);
+    border-color: var(--beach-peach);
+    border-radius: 10px;
+    color: var(--ink);
+    font-weight: 800;
+    padding: 0.75rem 1.6rem;
+}
+
+.booking-next-btn:hover,
+.booking-next-btn:focus,
+.booking-confirm-btn:hover,
+.booking-confirm-btn:focus {
+    background: var(--wonder-blue);
+    border-color: var(--wonder-blue);
+    color: #fff;
+}
+
+.booking-receipt-box {
+    border: 1px solid rgba(0, 59, 149, 0.14);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    padding: 18px;
+}
+
+.booking-receipt-box h5 {
+    color: var(--wonder-blue);
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.booking-receipt-box p {
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.booking-total-row {
+    align-items: center;
+    background: var(--beach-peach-soft);
+    border-radius: 12px;
+    color: var(--wonder-blue);
+    display: flex;
+    font-size: 1.05rem;
+    font-weight: 800;
+    justify-content: space-between;
+    padding: 16px 18px;
 }
 
 .receipt-card {
     border: 0;
+}
+
+.auth-page {
+    align-items: center;
+    background: var(--beach-peach);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 48px 16px;
+}
+
+.auth-card {
+    --auth-card-width: 560px;
+    --auth-card-min-width: 320px;
+    --auth-card-padding: 36px;
+
+    background: #fff;
+    border: 1px solid rgba(0, 59, 149, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 18px 42px rgba(1, 37, 91, 0.18);
+    color: var(--ink);
+    max-width: var(--auth-card-width);
+    min-width: var(--auth-card-min-width);
+    padding: var(--auth-card-padding);
+    width: 100%;
+}
+
+.auth-card-sm {
+    max-width: var(--auth-card-width);
+}
+
+.auth-card h1,
+.auth-card h2,
+.auth-card h4,
+.auth-card legend {
+    color: var(--wonder-blue);
+    font-weight: 800;
+    text-align: center;
+}
+
+.auth-card legend {
+    border-color: rgba(0, 59, 149, 0.18) !important;
+}
+
+.auth-card p,
+.auth-card small,
+.auth-card .text-muted,
+.auth-card .text-secondary {
+    color: var(--muted) !important;
+}
+
+.auth-card a {
+    color: var(--wonder-blue);
+    font-weight: 700;
+}
+
+.auth-card .form-control,
+.auth-card .form-select,
+.auth-card input,
+.auth-card select,
+.auth-card textarea {
+    border-radius: 14px;
+    font-size: 1rem;
+    min-width: 0;
+    padding: 0.85rem 1rem;
+}
+
+.auth-card .btn,
+.wonder-btn {
+    background: var(--beach-peach);
+    border-color: var(--beach-peach);
+    border-radius: 14px;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 0.02rem;
+    padding: 0.85rem 1rem;
+}
+
+.auth-card .btn:hover,
+.auth-card .btn:focus,
+.wonder-btn:hover,
+.wonder-btn:focus {
+    background: var(--wonder-blue);
+    border-color: var(--wonder-blue);
+    color: #fff;
+}
+
+.auth-card input,
+.auth-card select,
+.auth-card textarea {
+    border-color: rgba(0, 59, 149, 0.24);
+}
+
+.auth-card input:focus,
+.auth-card select:focus,
+.auth-card textarea:focus {
+    border-color: var(--wonder-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 59, 149, 0.16);
+}
+
+.auth-card .border-top {
+    border-color: rgba(0, 59, 149, 0.14) !important;
+}
+
+.account-img {
+    border: 4px solid var(--beach-peach);
+    height: 92px;
+    object-fit: cover;
+    width: 92px;
+}
+
+.account-heading {
+    color: var(--wonder-blue);
+    font-weight: 800;
 }
 
 @media (max-width: 576px) {
@@ -412,5 +615,9 @@ body {
 
     .booking-panel {
         padding: 20px;
+    }
+
+    .auth-card {
+        padding: var(--auth-card-padding);
     }
 }

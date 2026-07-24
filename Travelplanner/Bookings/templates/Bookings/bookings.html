@@ -5,100 +5,251 @@
   <div class="booking-tabs">
     <ul class="nav nav-pills" id="bookingTabs" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link booking-tab active" data-bs-toggle="pill" data-bs-target="#trip" type="button" role="tab" aria-controls="trip" aria-selected="true">
+        <a class="nav-link booking-tab {% if active_step == 'destination' %}active{% endif %}" href="{% url 'nav-bookings' %}?step=destination">
           <i class="bi bi-geo-alt"></i>
           <span>Destination</span>
-        </button>
+        </a>
       </li>
 
       <li class="nav-item" role="presentation">
-        <button class="nav-link booking-tab" data-bs-toggle="pill" data-bs-target="#accommodation" type="button" role="tab" aria-controls="accommodation" aria-selected="false">
+        <a class="nav-link booking-tab {% if active_step == 'accommodation' %}active{% endif %}" href="{% url 'nav-bookings' %}?step=accommodation">
           <i class="bi bi-building"></i>
           <span>Stays</span>
-        </button>
+        </a>
       </li>
 
       <li class="nav-item" role="presentation">
-        <button class="nav-link booking-tab" data-bs-toggle="pill" data-bs-target="#vehicles" type="button" role="tab" aria-controls="vehicles" aria-selected="false">
+        <a class="nav-link booking-tab {% if active_step == 'vehicles' %}active{% endif %}" href="{% url 'nav-bookings' %}?step=vehicles">
           <i class="bi bi-car-front"></i>
           <span>Car rental</span>
-        </button>
+        </a>
       </li>
 
       <li class="nav-item" role="presentation">
-        <button class="nav-link booking-tab" data-bs-toggle="pill" data-bs-target="#receipts" type="button" role="tab" aria-controls="receipts" aria-selected="false">
+        <a class="nav-link booking-tab {% if active_step == 'receipts' %}active{% endif %}" href="{% url 'nav-bookings' %}?step=receipts">
           <i class="bi bi-receipt"></i>
-          <span>Receipts</span>
-        </button>
+          <span>Receipt</span>
+        </a>
       </li>
     </ul>
   </div>
 
   <div class="container py-4">
-    <div class="tab-content booking-panel">
+    <div class="booking-panel">
+      {% if active_step == 'destination' %}
+        <div class="booking-step">
+          <h2>Destination</h2>
+          <p class="booking-step-copy">Choose the location, tour destination, and number of people visiting.</p>
 
-            <div class="tab-pane fade show active" id="trip" role="tabpanel" tabindex="0">
-            <h2>Destination</h2>
-            <div class="booking-form-card mt-4">
-              <form method="POST">
-                {% csrf_token %}
-                {{ d_form|crispy }}
+          <div class="booking-form-card mt-4">
+            <form method="POST">
+              {% csrf_token %}
+              {{ d_form|crispy }}
 
-                <button type="submit" name="destination_submit" class="btn btn-primary">Book Now</button>
-              </form>
-            </div>
+              <button type="submit" name="destination_submit" class="btn booking-next-btn">Next</button>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if active_step == 'accommodation' %}
+        <div class="booking-step">
+          <h2>Accommodation</h2>
+          <p class="booking-step-copy">Pick where you will stay, the type of stay, and how many guests are included.</p>
+
+          <div class="booking-form-card mt-4">
+            <form method="POST">
+              {% csrf_token %}
+              {{ a_form|crispy }}
+
+              <button type="submit" name="accommodation_submit" class="btn booking-next-btn">Next</button>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if active_step == 'vehicles' %}
+        <div class="booking-step">
+          <h2>Car rental</h2>
+          <p class="booking-step-copy">Select a vehicle type, rental vehicle, and the number of seats you need.</p>
+
+          <div class="booking-form-card mt-4">
+            <form method="POST">
+              {% csrf_token %}
+              {{ v_form|crispy }}
+
+              <button type="submit" name="vehicle_submit" class="btn booking-next-btn">Next</button>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if active_step == 'receipts' %}
+        <div class="booking-step">
+          <h2>Receipt</h2>
+          <p class="booking-step-copy">Review all details from each form before confirming the booking.</p>
+
+          <div class="booking-form-card mt-4">
+            <div class="booking-receipt-box">
+              <h5>Destination</h5>
+              {% if selected_destination %}
+                <p><strong>Location:</strong> {{ selected_destination.location }}</p>
+                <p><strong>Tour destination:</strong> {{ selected_destination.name }}</p>
+                <p><strong>People:</strong> {{ destination_people }}</p>
+                <p><strong>Subtotal:</strong> KSh {{ destination_total }}</p>
+              {% else %}
+                <p>No destination selected yet.</p>
+              {% endif %}
             </div>
 
-            <div class="tab-pane fade" id="accommodation" role="tabpanel" tabindex="0">
-            <h2>Accommodation</h2>
-            <div class="booking-form-card mt-4">
-              <form method="POST">
-                {% csrf_token %}
-                {{ a_form|crispy }}
-
-                <button type="submit" name="accommodation_submit" class="btn btn-primary">
-                  Book Now
-                </button>
-              </form>
-            </div>
-            </div>
-
-            <div class="tab-pane fade" id="vehicles" role="tabpanel" tabindex="0">
-            <h2>Vehicles</h2>
-            <div class="booking-form-card mt-4">
-              <form method="POST">
-                {% csrf_token %}
-                {{ v_form|crispy }}
-
-                <button type="submit" name="vehicle_submit" class="btn btn-primary">
-                  Book Now
-                </button>
-              </form>
-            </div>
+            <div class="booking-receipt-box">
+              <h5>Accommodation</h5>
+              {% if selected_accommodation %}
+                <p><strong>Location:</strong> {{ selected_accommodation.location }}</p>
+                <p><strong>Type:</strong> {{ selected_accommodation.get_type_display }}</p>
+                <p><strong>Name:</strong> {{ selected_accommodation.name }}</p>
+                <p><strong>People:</strong> {{ accommodation_people }}</p>
+                <p><strong>Subtotal:</strong> KSh {{ accommodation_total }}</p>
+              {% else %}
+                <p>No accommodation selected yet.</p>
+              {% endif %}
             </div>
 
-            <div class="tab-pane fade" id="receipts" role="tabpanel" tabindex="0">
-            <h2>Receipts</h2>
-            <div class="booking-form-card mt-4">
-              <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                  <label class="form-label" for="payment_method">Payment method</label>
-                  <select class="form-select" id="payment_method" name="payment_method">
-                    <option value="mobile_money">Mobile Money</option>
-                    <option value="card">Card</option>
-                    <option value="bank_transfer">Bank Transfer</option>
-                    <option value="cash">Cash</option>
-                  </select>
-                </div>
-                <button type="submit" name="confirm_booking" class="btn btn-success">
-                  Confirm Booking
-                </button>
-              </form>
-            </div>
+            <div class="booking-receipt-box">
+              <h5>Car rental</h5>
+              {% if selected_vehicle %}
+                <p><strong>Type:</strong> {{ selected_vehicle.get_vehicle_type_display }}</p>
+                <p><strong>Vehicle:</strong> {{ selected_vehicle.name }}</p>
+                <p><strong>Seats needed:</strong> {{ vehicle_seats }}</p>
+                <p><strong>Subtotal:</strong> KSh {{ vehicle_total }}</p>
+              {% else %}
+                <p>No vehicle selected yet.</p>
+              {% endif %}
             </div>
 
-  </div>
+            <div class="booking-total-row">
+              <span>Total</span>
+              <strong>KSh {{ receipt_total }}</strong>
+            </div>
+
+            <form method="POST" class="mt-4">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label class="form-label" for="payment_method">Payment method</label>
+                <select class="form-select" id="payment_method" name="payment_method">
+                  <option value="mobile_money">Mobile Money</option>
+                  <option value="card">Card</option>
+                  <option value="bank_transfer">Bank Transfer</option>
+                  <option value="cash">Cash</option>
+                </select>
+              </div>
+              <button type="submit" name="confirm_booking" class="btn booking-confirm-btn">
+                Book now
+              </button>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+    </div>
   </div>
 </section>
+{{ booking_options|json_script:"booking-options" }}
+<script>
+  const bookingOptionsElement = document.getElementById("booking-options");
+  const bookingOptions = bookingOptionsElement ? JSON.parse(bookingOptionsElement.textContent) : {};
+
+  function resetSelect(select, placeholder) {
+    select.innerHTML = "";
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = placeholder;
+    select.appendChild(option);
+  }
+
+  function fillSelect(select, options, placeholder) {
+    const selectedValue = select.value;
+    resetSelect(select, placeholder);
+
+    options.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.id;
+      option.textContent = item.name;
+      select.appendChild(option);
+    });
+
+    if (options.some((item) => String(item.id) === selectedValue)) {
+      select.value = selectedValue;
+    }
+  }
+
+  function setupDestinationFilter() {
+    const locationSelect = document.getElementById("id_location");
+    const destinationSelect = document.getElementById("id_destination");
+
+    if (!locationSelect || !destinationSelect) {
+      return;
+    }
+
+    const updateDestinations = () => {
+      const locationId = locationSelect.value;
+      const destinations = (bookingOptions.destinations || []).filter((item) => String(item.location_id) === locationId);
+      fillSelect(destinationSelect, destinations, "Choose a tour destination");
+    };
+
+    locationSelect.addEventListener("change", updateDestinations);
+    updateDestinations();
+  }
+
+  function setupAccommodationFilter() {
+    const locationSelect = document.getElementById("id_location");
+    const typeSelect = document.getElementById("id_accommodation_type");
+    const accommodationSelect = document.getElementById("id_accommodation");
+
+    if (!locationSelect || !typeSelect || !accommodationSelect) {
+      return;
+    }
+
+    const updateAccommodations = () => {
+      const locationId = locationSelect.value;
+      const accommodationType = typeSelect.value;
+      const accommodations = (bookingOptions.accommodations || []).filter((item) => {
+        return String(item.location_id) === locationId && item.type === accommodationType;
+      });
+
+      fillSelect(accommodationSelect, accommodations, "Choose a stay name");
+    };
+
+    locationSelect.addEventListener("change", updateAccommodations);
+    typeSelect.addEventListener("change", updateAccommodations);
+    updateAccommodations();
+  }
+
+  function setupVehicleFilter() {
+    const locationSelect = document.getElementById("id_location");
+    const typeSelect = document.getElementById("id_vehicle_type");
+    const vehicleSelect = document.getElementById("id_vehicle");
+
+    if (!locationSelect || !typeSelect || !vehicleSelect) {
+      return;
+    }
+
+    const updateVehicles = () => {
+      const locationId = locationSelect.value;
+      const vehicleType = typeSelect.value;
+      const vehicles = (bookingOptions.vehicles || []).filter((item) => {
+        return String(item.location_id) === locationId && item.type === vehicleType;
+      });
+
+      fillSelect(vehicleSelect, vehicles, "Choose a rental vehicle");
+    };
+
+    locationSelect.addEventListener("change", updateVehicles);
+    typeSelect.addEventListener("change", updateVehicles);
+    updateVehicles();
+  }
+
+  setupDestinationFilter();
+  setupAccommodationFilter();
+  setupVehicleFilter();
+</script>
 {% endblock %}
